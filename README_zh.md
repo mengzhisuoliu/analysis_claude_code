@@ -45,31 +45,31 @@
     |
     v
 [v0: Bash Agent] -----> "一个工具就够了"
-    |                    16-50 行
+    |                    16-196 行
     v
 [v1: Basic Agent] ----> "完整的 Agent 模式"
-    |                    4 个工具，~200 行
+    |                    4 个工具，~420 行
     v
 [v2: Todo Agent] -----> "让计划显式化"
-    |                    +TodoManager，~300 行
+    |                    +TodoManager，~530 行
     v
 [v3: Subagent] -------> "分而治之"
-    |                    +Task 工具，~450 行
+    |                    +Task 工具，~620 行
     v
 [v4: Skills Agent] ---> "按需领域专业"
-    |                    +Skill 工具，~550 行
+    |                    +Skill 工具，~780 行
     v
 [v5: Compression] ----> "永不遗忘，永续工作"
-    |                    +ContextManager，~650 行
+    |                    +ContextManager，~800 行
     v
 [v6: Tasks Agent] ----> "从便利贴到看板"
-    |                    +TaskManager，~750 行
+    |                    +TaskManager，~890 行
     v
 [v7: Background] -----> "不等结果，继续干活"
-    |                    +BackgroundManager，~850 行
+    |                    +BackgroundManager，~960 行
     v
 [v8: Teammate] -------> "一群 Agent 无所不能"
-                         +TeammateManager，~1000 行
+                         +TeammateManager，~1330 行
 ```
 
 **推荐学习方式：**
@@ -128,15 +128,15 @@ while True:
 
 | 版本 | 行数 | 工具 | 核心新增 | 关键洞察 |
 |------|------|------|---------|---------|
-| [v0](./v0_bash_agent.py) | ~50 | bash | 递归子代理 | 一个工具就够了 |
-| [v1](./v1_basic_agent.py) | ~200 | bash, read, write, edit | 核心循环 | 模型即代理 |
-| [v2](./v2_todo_agent.py) | ~300 | +TodoWrite | 显式规划 | 约束赋能复杂性 |
-| [v3](./v3_subagent.py) | ~450 | +Task | 上下文隔离 | 干净上下文 = 更好结果 |
-| [v4](./v4_skills_agent.py) | ~550 | +Skill | 知识加载 | 专业无需重训 |
-| [v5](./v5_compression_agent.py) | ~650 | +ContextManager | 三层压缩 | 遗忘成就无限工作 |
-| [v6](./v6_tasks_agent.py) | ~750 | +TaskCreate/Get/Update/List | 持久化任务 | 便利贴到看板 |
-| [v7](./v7_background_agent.py) | ~850 | +TaskOutput/TaskStop | 后台执行 | 串行到并行 |
-| [v8](./v8_teammate_agent.py) | ~1000 | +TeamCreate/SendMessage/TeamDelete | 持久化队友 | 指令到协作 |
+| [v0](./v0_bash_agent.py) | ~196 | bash | 递归子代理 | 一个工具就够了 |
+| [v1](./v1_basic_agent.py) | ~420 | bash, read, write, edit | 核心循环 | 模型即代理 |
+| [v2](./v2_todo_agent.py) | ~530 | +TodoWrite | 显式规划 | 约束赋能复杂性 |
+| [v3](./v3_subagent.py) | ~620 | +Task | 上下文隔离 | 干净上下文 = 更好结果 |
+| [v4](./v4_skills_agent.py) | ~780 | +Skill | 知识加载 | 专业无需重训 |
+| [v5](./v5_compression_agent.py) | ~800 | +ContextManager | 三层压缩 | 遗忘成就无限工作 |
+| [v6](./v6_tasks_agent.py) | ~890 | +TaskCreate/Get/Update/List | 持久化任务 | 便利贴到看板 |
+| [v7](./v7_background_agent.py) | ~960 | +TaskOutput/TaskStop | 后台执行 | 串行到并行 |
+| [v8](./v8_teammate_agent.py) | ~1330 | +TeamCreate/SendMessage/TeamDelete | 持久化队友 | 指令到协作 |
 
 ## 子机制导航
 

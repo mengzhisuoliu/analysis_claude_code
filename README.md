@@ -45,31 +45,31 @@ Start Here
     |
     v
 [v0: Bash Agent] ----------> "One tool is enough"
-    |                         16-50 lines
+    |                         16-196 lines
     v
 [v1: Basic Agent] ----------> "The complete agent pattern"
-    |                          4 tools, ~200 lines
+    |                          4 tools, ~420 lines
     v
 [v2: Todo Agent] -----------> "Make plans explicit"
-    |                          +TodoManager, ~300 lines
+    |                          +TodoManager, ~530 lines
     v
 [v3: Subagent] -------------> "Divide and conquer"
-    |                          +Task tool, ~450 lines
+    |                          +Task tool, ~620 lines
     v
 [v4: Skills Agent] ----------> "Domain expertise on-demand"
-    |                           +Skill tool, ~550 lines
+    |                           +Skill tool, ~780 lines
     v
 [v5: Compression Agent] ----> "Never forget, work forever"
-    |                          +ContextManager, ~650 lines
+    |                          +ContextManager, ~800 lines
     v
 [v6: Tasks Agent] ----------> "From sticky notes to kanban"
-    |                          +TaskManager, ~750 lines
+    |                          +TaskManager, ~890 lines
     v
 [v7: Background Agent] -----> "Don't wait, keep working"
-    |                          +BackgroundManager, ~850 lines
+    |                          +BackgroundManager, ~960 lines
     v
 [v8: Teammate Agent] -------> "A team of agents"
-                               +TeammateManager, ~1000 lines
+                               +TeammateManager, ~1330 lines
 ```
 
 **Recommended approach:**
@@ -128,15 +128,15 @@ That's it. The model calls tools until done. Everything else is refinement.
 
 | Version | Lines | Tools | Core Addition | Key Insight |
 |---------|-------|-------|---------------|-------------|
-| [v0](./v0_bash_agent.py) | ~50 | bash | Recursive subagents | One tool is enough |
-| [v1](./v1_basic_agent.py) | ~200 | bash, read, write, edit | Core loop | Model as Agent |
-| [v2](./v2_todo_agent.py) | ~300 | +TodoWrite | Explicit planning | Constraints enable complexity |
-| [v3](./v3_subagent.py) | ~450 | +Task | Context isolation | Clean context = better results |
-| [v4](./v4_skills_agent.py) | ~550 | +Skill | Knowledge loading | Expertise without retraining |
-| [v5](./v5_compression_agent.py) | ~650 | +ContextManager | 3-layer compression | Forgetting enables infinite work |
-| [v6](./v6_tasks_agent.py) | ~750 | +TaskCreate/Get/Update/List | Persistent tasks | Sticky notes to kanban |
-| [v7](./v7_background_agent.py) | ~850 | +TaskOutput/TaskStop | Background execution | Serial to parallel |
-| [v8](./v8_teammate_agent.py) | ~1000 | +TeamCreate/SendMessage/TeamDelete | Persistent teammates | Command to collaboration |
+| [v0](./v0_bash_agent.py) | ~196 | bash | Recursive subagents | One tool is enough |
+| [v1](./v1_basic_agent.py) | ~420 | bash, read, write, edit | Core loop | Model as Agent |
+| [v2](./v2_todo_agent.py) | ~530 | +TodoWrite | Explicit planning | Constraints enable complexity |
+| [v3](./v3_subagent.py) | ~620 | +Task | Context isolation | Clean context = better results |
+| [v4](./v4_skills_agent.py) | ~780 | +Skill | Knowledge loading | Expertise without retraining |
+| [v5](./v5_compression_agent.py) | ~800 | +ContextManager | 3-layer compression | Forgetting enables infinite work |
+| [v6](./v6_tasks_agent.py) | ~890 | +TaskCreate/Get/Update/List | Persistent tasks | Sticky notes to kanban |
+| [v7](./v7_background_agent.py) | ~960 | +TaskOutput/TaskStop | Background execution | Serial to parallel |
+| [v8](./v8_teammate_agent.py) | ~1330 | +TeamCreate/SendMessage/TeamDelete | Persistent teammates | Command to collaboration |
 
 ## Sub-Mechanism Guide
 
@@ -171,16 +171,16 @@ Each version introduces one core class, but the real learning is in the sub-mech
 
 ```
 learn-claude-code/
-├── v0_bash_agent.py          # ~50 lines: 1 tool, recursive subagents
+├── v0_bash_agent.py          # ~196 lines: 1 tool, recursive subagents
 ├── v0_bash_agent_mini.py     # ~16 lines: extreme compression
-├── v1_basic_agent.py         # ~200 lines: 4 tools, core loop
-├── v2_todo_agent.py          # ~300 lines: + TodoManager
-├── v3_subagent.py            # ~450 lines: + Task tool, agent registry
-├── v4_skills_agent.py        # ~550 lines: + Skill tool, SkillLoader
-├── v5_compression_agent.py   # ~650 lines: + ContextManager, 3-layer compression
-├── v6_tasks_agent.py         # ~750 lines: + TaskManager, CRUD with dependencies
-├── v7_background_agent.py    # ~850 lines: + BackgroundManager, parallel execution
-├── v8_teammate_agent.py      # ~1000 lines: + TeammateManager, team collaboration
+├── v1_basic_agent.py         # ~420 lines: 4 tools, core loop
+├── v2_todo_agent.py          # ~530 lines: + TodoManager
+├── v3_subagent.py            # ~620 lines: + Task tool, agent registry
+├── v4_skills_agent.py        # ~780 lines: + Skill tool, SkillLoader
+├── v5_compression_agent.py   # ~800 lines: + ContextManager, 3-layer compression
+├── v6_tasks_agent.py         # ~890 lines: + TaskManager, CRUD with dependencies
+├── v7_background_agent.py    # ~960 lines: + BackgroundManager, parallel execution
+├── v8_teammate_agent.py      # ~1330 lines: + TeammateManager, team collaboration
 ├── skills/                   # Example skills (pdf, code-review, mcp-builder, agent-builder)
 ├── docs/                     # Technical documentation (EN + ZH + JA)
 ├── articles/                 # Blog-style articles (ZH)

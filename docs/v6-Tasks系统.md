@@ -122,17 +122,18 @@ Tasks 持久化在磁盘上，压缩时不会丢失：
 
 ## Feature Gate
 
-两个系统通过 feature gate 互斥：
+在我们的教学代码中，v6 用 Tasks 系统完全替代了 TodoWrite。两个系统在概念上互斥：
 
 ```python
-def is_tasks_enabled():
-    return get_feature_flag("tasks_v2")
+# v2 使用 TodoWrite（内存中，只能全量覆盖）
+# v6 使用 TaskCreate/Get/Update/List（磁盘持久化，CRUD 操作）
 
-# TodoWrite 只在 Tasks 未启用时可用
-# TaskCreate/Get/Update/List 只在 Tasks 启用时可用
+# 在实现中，v6 直接包含 Tasks 工具并移除 TodoWrite
+ALL_TOOLS = BASE_TOOLS + [TASK_CREATE_TOOL, TASK_GET_TOOL,
+                          TASK_UPDATE_TOOL, TASK_LIST_TOOL]
 ```
 
-启用 Tasks 时自动迁移旧的 TodoWrite 数据。
+关键区别：TodoWrite 的数据只存在于消息历史中（压缩后丢失），而 Tasks 的数据存在于磁盘上（压缩后依然存在）。
 
 ## 更深的洞察
 

@@ -51,7 +51,6 @@ class BackgroundTask:
 |------|------|---------|
 | local_bash | `b` | 运行测试、lint、构建 |
 | local_agent | `a` | 探索代码、分析文件 |
-| remote_agent | `r` | 远程会话 |
 | in_process_teammate | `t` | Teammate 协作 (v8) |
 
 ID 的生成格式是 `{前缀}{uuid4_hex[:6]}`，例如 `b3a9f1` 或 `a7c2d4`。前缀让日志和通知中的类型一目了然。

@@ -45,31 +45,31 @@
     |
     v
 [v0: Bash Agent] ----------> 「1つのツールで十分」
-    |                         16-50行
+    |                         16-196行
     v
 [v1: Basic Agent] ----------> 「完全なエージェントパターン」
-    |                          4ツール、約200行
+    |                          4ツール、約420行
     v
 [v2: Todo Agent] -----------> 「計画を明示化する」
-    |                          +TodoManager、約300行
+    |                          +TodoManager、約530行
     v
 [v3: Subagent] -------------> 「分割統治」
-    |                          +Taskツール、約450行
+    |                          +Taskツール、約620行
     v
 [v4: Skills Agent] ----------> 「オンデマンドのドメイン専門性」
-    |                           +Skillツール、約550行
+    |                           +Skillツール、約780行
     v
 [v5: Compression Agent] ----> 「忘れない、永遠に作業」
-    |                          +ContextManager、約650行
+    |                          +ContextManager、約800行
     v
 [v6: Tasks Agent] ----------> 「付箋からカンバンへ」
-    |                          +TaskManager、約750行
+    |                          +TaskManager、約890行
     v
 [v7: Background Agent] -----> 「待たない、作業を続ける」
-    |                          +BackgroundManager、約850行
+    |                          +BackgroundManager、約960行
     v
 [v8: Teammate Agent] -------> 「エージェントのチーム」
-                               +TeammateManager、約1000行
+                               +TeammateManager、約1330行
 ```
 
 **おすすめの学習方法：**
@@ -128,15 +128,15 @@ while True:
 
 | バージョン | 行数 | ツール | コア追加 | 重要な洞察 |
 |------------|------|--------|----------|------------|
-| [v0](./v0_bash_agent.py) | ~50 | bash | 再帰的サブエージェント | 1つのツールで十分 |
-| [v1](./v1_basic_agent.py) | ~200 | bash, read, write, edit | コアループ | モデルがエージェント |
-| [v2](./v2_todo_agent.py) | ~300 | +TodoWrite | 明示的計画 | 制約が複雑さを可能にする |
-| [v3](./v3_subagent.py) | ~450 | +Task | コンテキスト分離 | クリーンなコンテキスト = より良い結果 |
-| [v4](./v4_skills_agent.py) | ~550 | +Skill | 知識読み込み | 再学習なしの専門性 |
-| [v5](./v5_compression_agent.py) | ~650 | +ContextManager | 3層圧縮 | 忘却が無限作業を可能にする |
-| [v6](./v6_tasks_agent.py) | ~750 | +TaskCreate/Get/Update/List | 永続タスク | 付箋からカンバンへ |
-| [v7](./v7_background_agent.py) | ~850 | +TaskOutput/TaskStop | バックグラウンド実行 | 直列から並列へ |
-| [v8](./v8_teammate_agent.py) | ~1000 | +TeamCreate/SendMessage/TeamDelete | 永続チームメイト | 命令から協調へ |
+| [v0](./v0_bash_agent.py) | ~196 | bash | 再帰的サブエージェント | 1つのツールで十分 |
+| [v1](./v1_basic_agent.py) | ~420 | bash, read, write, edit | コアループ | モデルがエージェント |
+| [v2](./v2_todo_agent.py) | ~530 | +TodoWrite | 明示的計画 | 制約が複雑さを可能にする |
+| [v3](./v3_subagent.py) | ~620 | +Task | コンテキスト分離 | クリーンなコンテキスト = より良い結果 |
+| [v4](./v4_skills_agent.py) | ~780 | +Skill | 知識読み込み | 再学習なしの専門性 |
+| [v5](./v5_compression_agent.py) | ~800 | +ContextManager | 3層圧縮 | 忘却が無限作業を可能にする |
+| [v6](./v6_tasks_agent.py) | ~890 | +TaskCreate/Get/Update/List | 永続タスク | 付箋からカンバンへ |
+| [v7](./v7_background_agent.py) | ~960 | +TaskOutput/TaskStop | バックグラウンド実行 | 直列から並列へ |
+| [v8](./v8_teammate_agent.py) | ~1330 | +TeamCreate/SendMessage/TeamDelete | 永続チームメイト | 命令から協調へ |
 
 ## サブメカニズムガイド
 

@@ -122,17 +122,19 @@ TodoWrite couldn't do this -- its tasks lived only in message history, gone afte
 
 ## Feature Gate
 
-The two systems are mutually exclusive via feature gate:
+In our educational code, v6 replaces TodoWrite entirely with the Tasks system. The two systems are conceptually mutually exclusive:
 
 ```python
-def is_tasks_enabled():
-    return get_feature_flag("tasks_v2")
+# v2 uses TodoWrite (in-memory, overwrite-only)
+# v6 uses TaskCreate/Get/Update/List (disk-persisted, CRUD)
 
-# TodoWrite available only when Tasks is disabled
-# TaskCreate/Get/Update/List available only when Tasks is enabled
+# In our implementation, v6 simply includes Tasks tools
+# and removes TodoWrite from the tool set
+ALL_TOOLS = BASE_TOOLS + [TASK_CREATE_TOOL, TASK_GET_TOOL,
+                          TASK_UPDATE_TOOL, TASK_LIST_TOOL]
 ```
 
-Enabling Tasks automatically migrates old TodoWrite data.
+The key difference: TodoWrite data lives only in message history (lost on compression), while Tasks data lives on disk (survives compression).
 
 ## The Deeper Insight
 

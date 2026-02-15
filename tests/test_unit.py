@@ -1200,6 +1200,44 @@ def test_v8_message_types_count():
     return True
 
 
+def test_v2_system_reminders():
+    """Verify v2 has INITIAL_REMINDER and NAG_REMINDER for planning enforcement."""
+    import v2_todo_agent
+    source = open(v2_todo_agent.__file__).read()
+    assert "INITIAL_REMINDER" in source, \
+        "v2 must define INITIAL_REMINDER constant"
+    assert "NAG_REMINDER" in source, \
+        "v2 must define NAG_REMINDER constant"
+    assert hasattr(v2_todo_agent, "INITIAL_REMINDER"), \
+        "INITIAL_REMINDER must be a module-level constant"
+    assert hasattr(v2_todo_agent, "NAG_REMINDER"), \
+        "NAG_REMINDER must be a module-level constant"
+    assert len(v2_todo_agent.INITIAL_REMINDER) > 20, \
+        "INITIAL_REMINDER should be a substantial prompt"
+    assert len(v2_todo_agent.NAG_REMINDER) > 20, \
+        "NAG_REMINDER should be a substantial prompt"
+    print("PASS: test_v2_system_reminders")
+    return True
+
+
+def test_v3_context_isolation():
+    """Verify v3 subagent creates fresh message lists (context isolation)."""
+    import inspect, v3_subagent
+    run_task_source = inspect.getsource(v3_subagent.run_task)
+    assert "sub_messages" in run_task_source, \
+        "run_task must use isolated sub_messages list"
+    # Verify explore agents get read-only tools (no write_file or edit_file)
+    explore_tool_names = v3_subagent.AGENT_TYPES["explore"]["tools"]
+    assert "write_file" not in explore_tool_names, \
+        "Explore subagent should not have write_file"
+    assert "edit_file" not in explore_tool_names, \
+        "Explore subagent should not have edit_file"
+    assert "read_file" in explore_tool_names, \
+        "Explore subagent should have read_file"
+    print("PASS: test_v3_context_isolation")
+    return True
+
+
 # =============================================================================
 # Main
 # =============================================================================
@@ -1281,6 +1319,9 @@ if __name__ == "__main__":
         test_v8_tool_count,
         test_v8_teammate_tools_subset,
         test_v8_message_types_count,
+        # v2/v3 mechanism-specific
+        test_v2_system_reminders,
+        test_v3_context_isolation,
     ]
 
     failed = []

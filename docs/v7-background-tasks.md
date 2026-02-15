@@ -51,7 +51,6 @@ Each background task type has a distinct ID prefix -- you know the type at a gla
 |------|--------|-------------|
 | local_bash | `b` | Run tests, lint, build |
 | local_agent | `a` | Explore code, analyze files |
-| remote_agent | `r` | Remote sessions |
 | in_process_teammate | `t` | Teammate collaboration (v8) |
 
 IDs are generated as `{prefix}{uuid4_hex[:6]}`, e.g. `b3a9f1` or `a7c2d4`. The prefix gives immediate type visibility in logs and notifications.
